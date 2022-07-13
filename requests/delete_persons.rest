@@ -1,7 +1,7 @@
-DELETE http://localhost:3001/api/persons/4
+DELETE https://hidden-ravine-95959.herokuapp.com/api/persons/4
 
 ###
-POST http://localhost:3001/api/persons
+POST https://hidden-ravine-95959.herokuapp.com/api/persons
 Content-Type: application/json
 
 {
