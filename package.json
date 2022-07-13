@@ -7,7 +7,7 @@
     "start": "node index.js",
     "dev": "nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build:ui": "rm -rf build && cd ../FullStackOpen/part2/phonebook/ && npm run build && cp -r build ../fullstackopenpt3",
+    "build:ui": "rm -rf build && cd ../FullStackOpen/part2/phonebook/ && npm run build && cp -r build ../../../fullstackopenPt3/",
     "deploy": "git push heroku master",
     "deploy:full": "npm run build:ui && git add . && git commit -m uibuild && npm run deploy",
     "logs:prod": "heroku logs --tail"
@@ -21,7 +21,7 @@
   "bugs": {
     "url": "https://github.com/MikkeBee/fullstackopenPt3/issues"
   },
-  "homepage": "https://github.com/MikkeBee/fullstackopenPt3#readme",
+  "homepage": "https://github.com/MikkeBee/fullstackopenPt3",
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^4.18.1",
