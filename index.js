@@ -88,6 +88,7 @@ app.delete("/api/persons/:id", (request, response) => {
 });
 
 app.post("/api/persons", (request, response) => {
+  console.log(request);
   const body = request.body;
 
   if (!body.name || !body.number) {

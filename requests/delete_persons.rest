@@ -1,4 +1,4 @@
-DELETE https://hidden-ravine-95959.herokuapp.com/api/persons/4
+DELETE https://hidden-ravine-95959.herokuapp.com/api/persons/5
 
 ###
 POST https://hidden-ravine-95959.herokuapp.com/api/persons
