@@ -64,24 +64,27 @@ app.delete("/api/persons/:id", (request, response) => {
 app.post("/api/persons", (request, response) => {
   const body = request.body;
 
-  if (!body.name || !body.number) {
-    return response.status(400).json({
-      error: "Some content is missing",
-    });
-    // } else if (person.find((element) => element.name === body.name)) {
-    //   return response.status(400).json({
-    //     error: "That name already exists in the phonebook",
-    //   });
-  }
+  // if (!body.name || !body.number) {
+  //   return response.status(400).json({
+  //     error: "Some content is missing",
+  //   });
+  //   // } else if (person.find((element) => element.name === body.name)) {
+  //   //   return response.status(400).json({
+  //   //     error: "That name already exists in the phonebook",
+  //   //   });
+  // }
 
   const person = new Person({
     name: body.name,
     number: body.number,
   });
 
-  person.save().then((savedPerson) => {
-    response.json(savedPerson);
-  });
+  person
+    .save()
+    .then((savedPerson) => {
+      response.json(savedPerson);
+    })
+    .catch((error) => next(error));
 });
 
 app.put("/api/persons/:id", (request, response) => {
@@ -102,6 +105,8 @@ const errorHandler = (error, request, response, next) => {
     return response.status(400).send({
       error: "malformatted id",
     });
+  } else if (error.name === "ValidationError") {
+    return response.status(400).json({ error: error.message });
   }
   next(error);
 };

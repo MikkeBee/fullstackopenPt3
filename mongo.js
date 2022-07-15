@@ -14,8 +14,16 @@ const url = `mongodb+srv://fullstack:${password}@cluster0.ce4yfgj.mongodb.net/ph
 mongoose.connect(url);
 
 const personSchema = new mongoose.Schema({
-  name: String,
-  number: String,
+  name: {
+    type: String,
+    minLength: 3,
+    required: true,
+  },
+  number: {
+    type: String,
+    minLength: 1,
+    required: true,
+  },
 });
 
 const Person = mongoose.model("Person", personSchema);
