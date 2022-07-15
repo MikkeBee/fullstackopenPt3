@@ -93,9 +93,10 @@ app.get("/api/persons/:id", (request, response) => {
 });
 
 app.delete("/api/persons/:id", (request, response) => {
-  const id = Number(request.params.id);
-  persons = persons.find((person) => person.id !== id);
-  response.status(204).end();
+  const id = request.params.id;
+  Person.findByIdAndDelete(id).then(() => {
+    response.status(204).end();
+  });
 });
 
 app.post("/api/persons", (request, response) => {
@@ -105,10 +106,10 @@ app.post("/api/persons", (request, response) => {
     return response.status(400).json({
       error: "Some content is missing",
     });
-  } else if (person.find((element) => element.name === body.name)) {
-    return response.status(400).json({
-      error: "That name already exists in the phonebook",
-    });
+    // } else if (person.find((element) => element.name === body.name)) {
+    //   return response.status(400).json({
+    //     error: "That name already exists in the phonebook",
+    //   });
   }
 
   const person = new Person({
