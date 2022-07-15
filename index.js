@@ -125,6 +125,10 @@ app.put("/api/persons/:id", (request, response) => {
   const body = request.body;
   const id = request.params.id;
   const person = { name: body.name, number: body.number };
+
+  Person.findByIdAndUpdate(id, person).then((newPerson) => {
+    response.json(newPerson);
+  });
 });
 
 const PORT = process.env.PORT;
