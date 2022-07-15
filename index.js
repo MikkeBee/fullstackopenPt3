@@ -105,10 +105,10 @@ app.post("/api/persons", (request, response) => {
     return response.status(400).json({
       error: "Some content is missing",
     });
-    // } else if (persons.find((element) => element.name === body.name)) {
-    //   return response.status(400).json({
-    //     error: "That name already exists in the phonebook",
-    //   });
+  } else if (person.find((element) => element.name === body.name)) {
+    return response.status(400).json({
+      error: "That name already exists in the phonebook",
+    });
   }
 
   const person = new Person({
@@ -126,8 +126,8 @@ app.put("/api/persons/:id", (request, response) => {
   const id = request.params.id;
   const person = { name: body.name, number: body.number };
 
-  Person.findByIdAndUpdate(id, person).then((newPerson) => {
-    response.json(newPerson);
+  Person.findByIdAndUpdate(id, person).then((updatePerson) => {
+    response.json(updatePerson);
   });
 });
 
