@@ -1,10 +1,18 @@
 DELETE https://hidden-ravine-95959.herokuapp.com/api/persons/5
 
 ###
-POST https://hidden-ravine-95959.herokuapp.com/api/persons
+# POST https://hidden-ravine-95959.herokuapp.com/api/persons
+# Content-Type: application/json
+
+# {
+#     "name": "Mikke Blakley",
+#     "number": "24524354"
+# }
+
+POST http://localhost:3001/api/persons
 Content-Type: application/json
 
 {
-    "name": "Mikke Blakley",
-    "number": "24524354"
+    "name": "Sanchez",
+    "number": "1234567890"
 }
